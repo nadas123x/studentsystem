@@ -18,19 +18,16 @@ public class OffreService implements IOffreService {
         return repository.findAllByOrderByIdAsc();
     }
 
+
     @Override
     public Offre create(Offre offre) {
-        return null;
+        return repository.save(offre);
+
     }
 
     @Override
-    public Offre update(Long id, int quantity) {
-        return repository.findById(id)
-                .map(existingOffre -> {
-                    existingOffre.setQuantity(quantity);
-                    return repository.save(existingOffre);
-                })
-                .orElse(null);
+    public Offre update(Offre offre) {
+        return repository.save(offre);
     }
 
     @Override

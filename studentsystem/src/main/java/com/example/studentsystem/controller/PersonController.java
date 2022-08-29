@@ -22,7 +22,7 @@ public class PersonController
         return services.listAll();
     }
 
-    @PostMapping(value = "/save")
+    @PostMapping(value = "/admin/save")
     private long saveBook(@RequestBody Person Persons)
     {
         services.saveOrUpdate(Persons);

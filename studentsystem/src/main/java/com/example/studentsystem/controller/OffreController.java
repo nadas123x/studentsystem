@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.yaml.snakeyaml.events.Event;
 
 import java.awt.print.Book;
 import java.util.List;
@@ -20,6 +21,7 @@ public class OffreController {
 
     @Autowired
     private OffreService service;
+    @Autowired
     private OffreRepository offreRepository;
 
 
@@ -28,16 +30,18 @@ public class OffreController {
         return service.find();
     }
 
+
+
     @PostMapping("/offre")
     @ResponseStatus(HttpStatus.CREATED)
     public Offre create(@RequestBody Offre offre) {
         return service.create(offre);
     }
-
-    @PutMapping("/offre/{id}")
-    public Offre update(@PathVariable Long id, @RequestBody Map<String, Object> payload) {
-        return service.update(id, (int) payload.get("quantity"));
+    public Offre saveEmployeeDetails(@RequestBody Offre offre) {
+        return offreRepository.save(offre);
     }
+
+
 
     @DeleteMapping("/offre/{id}")
     @ResponseStatus(HttpStatus.OK)
@@ -45,6 +49,12 @@ public class OffreController {
         service.delete(id);
     }
 
+
+
+    @PutMapping("/offre")
+    public Offre updateEmployee(@RequestBody Offre offre) {
+        return offreRepository.save(offre);
+    }
 
 
 

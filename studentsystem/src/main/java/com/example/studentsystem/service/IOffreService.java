@@ -8,7 +8,7 @@ public interface IOffreService {
 
     List<Offre> find();
     Offre create(Offre offre);
-    Offre update(Long id, int quantity);
+    Offre update(Offre offre);
     void delete(Long id);
 
 }

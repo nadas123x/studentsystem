@@ -19,4 +19,7 @@ public interface OffreRepository extends JpaRepository<Offre, Long> {
     @Query("from Offre b where b.name=:keyword OR b.description=:keyword OR b.quantity=:keyword OR b.imageback=:keyword OR b.datepub=:keyword")
     Page<Offre> findAll(Pageable pageable, @Param("keyword") String keyword);
 
+
+
+
 }

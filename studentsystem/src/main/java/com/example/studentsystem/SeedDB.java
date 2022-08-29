@@ -37,6 +37,11 @@ public class SeedDB {
 
     private static class PokemonEntry {
         public String name;
+        private String description;
+        private String datepub;
+
+        private int quantity;
+        private String categorie;
         public PokemonImage sprites;
     }
 
@@ -54,11 +59,15 @@ public class SeedDB {
                 PokemonEntry entry = restTemplate.getForObject(p.url, PokemonEntry.class);
 
                 String name = entry.name;
-                String imagefront = getBase64(entry.sprites.front_default);
+                String description = entry.description;
+                String datepub = entry.datepub;
+                String categorie = entry.categorie;
+                int quantity= entry.quantity;
                 String imageback = getBase64(entry.sprites.back_default);
 
                 Offre offre = new Offre();
                 service.create(offre);
+
             });
         };
     }
